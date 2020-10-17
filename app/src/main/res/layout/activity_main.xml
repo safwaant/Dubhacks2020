@@ -8,7 +8,7 @@
     tools:context="com.example.HouseScout.MainActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/logoView"
         android:layout_width="416dp"
         android:layout_height="301dp"
         android:contentDescription="@string/logoDesc"
@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.057" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/UsernameLogin"
+        android:id="@+id/usernameLogin"
         android:layout_width="254dp"
         android:layout_height="48dp"
         android:layout_marginTop="60dp"
@@ -46,10 +46,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
     <EditText
-        android:id="@+id/PasswordLogin"
+        android:id="@+id/passwordLogin"
         android:layout_width="254dp"
         android:layout_height="48dp"
         android:layout_marginTop="28dp"
@@ -62,7 +62,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UsernameLogin"
+        app:layout_constraintTop_toBottomOf="@+id/usernameLogin"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
@@ -75,7 +75,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PasswordLogin"
+        app:layout_constraintTop_toBottomOf="@+id/passwordLogin"
         app:layout_constraintVertical_bias="0.346" />
 
 

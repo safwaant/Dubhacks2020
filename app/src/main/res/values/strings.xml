@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">House Scout</string>
     <string name="logoDesc">Logo</string>
-    <string name="usernameHint">Username:</string>
-    <string name="passwordHint">Password:</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
+    <string name="usernameHint">Username</string>
+    <string name="passwordHint">Password</string>
+    <string name="passwordHint2">Confirm Password</string>
     <string name="loginButton">LOGIN</string>
+    <string name="registrationText">Registration</string>
 </resources>
