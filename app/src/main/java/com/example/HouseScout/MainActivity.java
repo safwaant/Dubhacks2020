@@ -1,8 +1,10 @@
-package com.example.hfinder;
+package com.example.HouseScout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.HouseScout.R;
 
 public class MainActivity extends AppCompatActivity {
 

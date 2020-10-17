@@ -1,4 +1,4 @@
-package com.example.hfinder;
+package com.example.HouseScout;
 
 import android.content.Context;
 
