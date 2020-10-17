@@ -1,13 +1,7 @@
 <resources>
     <string name="app_name">House Scout</string>
     <string name="logoDesc">Logo</string>
-    <string name="emailHint">Email: </string>
+    <string name="usernameHint">Username:</string>
     <string name="passwordHint">Password:</string>
     <string name="loginButton">LOGIN</string>
-    <string name="title_activity_house_list">HouseList</string>
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
-    <string name="hello_world">Hello Square World!</string>
 </resources>
