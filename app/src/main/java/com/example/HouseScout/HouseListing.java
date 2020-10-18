@@ -34,6 +34,7 @@ public class HouseListing extends AppCompatActivity {
     AreaMetric metric;
     String zipcode = "98052";
     String index = "0";
+    TextView houseLink;
 
     ArrayList<String> prices = new ArrayList<>();
     @Override
@@ -49,6 +50,7 @@ public class HouseListing extends AppCompatActivity {
         location = findViewById(R.id.location);
         price = findViewById(R.id.price);
         houseImg = findViewById(R.id.imageView);
+        houseLink = findViewById(R.id.link);
 
         location.setText(zipcode);
 
@@ -60,6 +62,7 @@ public class HouseListing extends AppCompatActivity {
 
         Images imgs = new Images();
         imgs.execute(zipcode, index);
+
 
 
         houseImg.setOnClickListener(new View.OnClickListener() {
@@ -121,6 +124,7 @@ public class HouseListing extends AppCompatActivity {
 
     class Images extends AsyncTask<String, Void, Bitmap> {
         int retIdx = 0;
+        String zillowLink;
         @Override
         protected Bitmap doInBackground(String... strings) {
             Document doc = null;
@@ -143,6 +147,7 @@ public class HouseListing extends AppCompatActivity {
             Element anchor = photos.select("div.list-card-top > a").first();
             String src = anchor.child(0).attr("src");
 
+            zillowLink = photos.select("a").first().attr("abs:href");
 
             Bitmap bmp = null;
             try {
@@ -164,6 +169,7 @@ public class HouseListing extends AppCompatActivity {
                 houseImg.setImageBitmap(result);
             }
             index = retIdx + "";
+            houseLink.setText(zillowLink);
         }
     }
 
@@ -195,4 +201,5 @@ public class HouseListing extends AppCompatActivity {
             metric = m;
         }
     }
+
 }
