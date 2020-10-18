@@ -3,9 +3,10 @@
     <string name="logoDesc">Logo</string>
     <string name="firstName">First Name</string>
     <string name="lastName">Last Name</string>
-    <string name="usernameHint">Username</string>
+    <string name="emailHint">Email</string>
     <string name="passwordHint">Password</string>
     <string name="passwordHint2">Confirm Password</string>
     <string name="loginButton">LOGIN</string>
+    <string name="registrationButton">REGISTER</string>
     <string name="registrationText">Registration</string>
 </resources>
