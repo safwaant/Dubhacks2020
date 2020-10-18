@@ -3,20 +3,20 @@ package com.example.HouseScout;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Metric implements Parcelable {
+public class AreaMetric implements Parcelable {
     String test_rating;
     String commute_time;
     String medianIncome;
     String unemployment;
 
-    public Metric(String test_rating, String commute_time, String medianIncome, String unemployment) {
+    public AreaMetric(String test_rating, String commute_time, String medianIncome, String unemployment) {
         this.test_rating = test_rating;
         this.commute_time = commute_time;
         this.medianIncome = medianIncome;
         this.unemployment = unemployment;
     }
 
-    private Metric(Parcel parcel) {
+    private AreaMetric(Parcel parcel) {
         test_rating = parcel.readString();
         commute_time = parcel.readString();
         medianIncome = parcel.readString();
@@ -36,16 +36,16 @@ public class Metric implements Parcelable {
         parcel.writeString(unemployment);
     }
 
-    public static final Parcelable.Creator<Metric> CREATOR =
-            new Parcelable.Creator<Metric>() {
+    public static final Parcelable.Creator<AreaMetric> CREATOR =
+            new Parcelable.Creator<AreaMetric>() {
                 @Override
-                public Metric createFromParcel(Parcel parcel) {
-                    return new Metric(parcel);
+                public AreaMetric createFromParcel(Parcel parcel) {
+                    return new AreaMetric(parcel);
                 }
 
                 @Override
-                public Metric[] newArray(int i) {
-                    return new Metric[i];
+                public AreaMetric[] newArray(int i) {
+                    return new AreaMetric[i];
                 }
             };
 }

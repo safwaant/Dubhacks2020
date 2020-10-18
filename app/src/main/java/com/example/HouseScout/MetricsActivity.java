@@ -22,7 +22,7 @@ public class MetricsActivity extends AppCompatActivity {
         medianIncome = findViewById(R.id.medianIncome);
         unemployment = findViewById(R.id.unemployment);
 
-        Metric data = getIntent().getExtras().getParcelable(METRICS_KEY);
+        AreaMetric data = getIntent().getExtras().getParcelable(METRICS_KEY);
 
 
 
