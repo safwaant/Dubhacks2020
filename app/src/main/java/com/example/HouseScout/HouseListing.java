@@ -61,6 +61,7 @@ public class HouseListing extends AppCompatActivity {
         Images imgs = new Images();
         imgs.execute(zipcode, index);
 
+
         houseImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,11 +77,12 @@ public class HouseListing extends AppCompatActivity {
                 temp++;
                 String idx = "" + temp;
                 index = idx;
-                Prices priceList = new Prices();
-                priceList.execute(zipcode);
 
                 Images imgs = new Images();
                 imgs.execute(zipcode, index);
+
+                Prices priceList = new Prices();
+                priceList.execute(zipcode);
             }
         });
 
@@ -118,7 +120,7 @@ public class HouseListing extends AppCompatActivity {
     }
 
     class Images extends AsyncTask<String, Void, Bitmap> {
-
+        int retIdx = 0;
         @Override
         protected Bitmap doInBackground(String... strings) {
             Document doc = null;
@@ -126,7 +128,6 @@ public class HouseListing extends AppCompatActivity {
             String idx = strings[1];
             int index = Integer.parseInt(idx);
             String buyPref = "for_sale";
-            ArrayList<String> imgs = new ArrayList<>();
             String url = "https://www.zillow.com/" + "homes/" + buyPref + "/" + zipcode + "_rb/";
             try {
                 doc = Jsoup.connect(url).get();
@@ -134,9 +135,14 @@ public class HouseListing extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            Element photos = doc.select("ul.photo-cards > li").get(index);
+            retIdx = index;
+            if(index == 2) {
+                retIdx++;
+            }
+            Element photos = doc.select("ul.photo-cards > li").get(retIdx);
             Element anchor = photos.select("div.list-card-top > a").first();
             String src = anchor.child(0).attr("src");
+
 
             Bitmap bmp = null;
             try {
@@ -157,6 +163,7 @@ public class HouseListing extends AppCompatActivity {
             if (result != null) {
                 houseImg.setImageBitmap(result);
             }
+            index = retIdx + "";
         }
     }
 
