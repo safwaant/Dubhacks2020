@@ -14,7 +14,7 @@
         android:background="@color/white"
         android:minHeight="?attr/actionBarSize"
         app:titleTextColor="@color/white"
-        app:subtitleTextColor="@color/white"
+        app:subtitleTextColor="@color/darkGreen"
         android:theme="@style/AppTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +51,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginTop="20dp"
-        android:autofillHints="first name"
         android:backgroundTint="@color/white"
         android:drawableStart="@drawable/ic_action_name"
         android:hint="@string/firstName"
@@ -67,7 +66,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="48dp"
         android:layout_marginTop="20dp"
-        android:autofillHints="first name"
         android:backgroundTint="@color/white"
         android:drawableStart="@drawable/ic_action_name"
         android:hint="@string/lastName"
@@ -78,14 +76,14 @@
         app:layout_constraintTop_toBottomOf="@id/registrationText" />
 
     <EditText
-        android:id="@+id/usernameInput"
+        android:id="@+id/emailInput"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:autofillHints="username"
         android:backgroundTint="@color/white"
+        android:inputType="textPersonName"
         android:drawableStart="@drawable/ic_action_user"
-        android:hint="@string/usernameHint"
+        android:hint="@string/emailHint"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -97,23 +95,21 @@
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:autofillHints="password"
         android:backgroundTint="@color/white"
         android:drawableStart="@drawable/ic_action_pass"
         android:hint="@string/passwordHint"
-        android:inputType="textVisiblePassword"
+        android:inputType="textPassword"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernameInput" />
+        app:layout_constraintTop_toBottomOf="@+id/emailInput" />
 
     <EditText
         android:id="@+id/passwordInput2"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:autofillHints="password"
         android:backgroundTint="@color/white"
         android:drawableStart="@drawable/ic_action_pass"
         android:hint="@string/passwordHint2"
@@ -125,11 +121,11 @@
         app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/registerButton"
         android:layout_width="145dp"
         android:layout_height="55dp"
         android:backgroundTint="@color/white"
-        android:text="@string/loginButton"
+        android:text="@string/registrationButton"
         android:textColor="@color/darkGreen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

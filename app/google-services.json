@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "39669624526",
+    "firebase_url": "https://house-scout.firebaseio.com",
+    "project_id": "house-scout",
+    "storage_bucket": "house-scout.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39669624526:android:633c5f6d17147ad5496a9f",
+        "android_client_info": {
+          "package_name": "com.example.HouseScout"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "39669624526-3uscomdl2lca27tacpu8vo7uav8vrava.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiPpnl-TJus2xZrOOVuhzax5Wxw2ntib0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "39669624526-3uscomdl2lca27tacpu8vo7uav8vrava.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
