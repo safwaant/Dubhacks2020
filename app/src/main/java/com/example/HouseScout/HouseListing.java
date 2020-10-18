@@ -35,29 +35,31 @@ public class HouseListing extends AppCompatActivity {
     TextView price;
     ImageView houseImg;
     Button next;
-    Metric metric;
+    AreaMetric metric;
+    String zipcode = "98052";
+    String index = "0";
 
     ArrayList<String> prices = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_house_listing);
 
         next = findViewById(R.id.next);
         location = findViewById(R.id.location);
         price = findViewById(R.id.price);
         houseImg = findViewById(R.id.imageView);
 
-        location.setText("98052");
+        location.setText(zipcode);
 
         Prices priceList = new Prices();
-        priceList.execute();
+        priceList.execute(zipcode);
 
         Metrics score = new Metrics();
-        score.execute();
+        score.execute(zipcode);
 
         Images imgs = new Images();
-        imgs.execute();
+        imgs.execute(zipcode, index);
 
         houseImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,22 +72,27 @@ public class HouseListing extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int temp = Integer.parseInt(index);
+                temp++;
+                String idx = "" + temp;
+                index = idx;
                 Prices priceList = new Prices();
-                priceList.execute();
+                priceList.execute(zipcode);
 
                 Images imgs = new Images();
-                imgs.execute();
+                imgs.execute(zipcode, index);
             }
         });
 
     }
 
-    class Prices extends AsyncTask<Void, Void, ArrayList<String>> {
+    class Prices extends AsyncTask<String, Void, ArrayList<String>> {
 
         @Override
-        protected ArrayList<String> doInBackground(Void... voids) {
+        protected ArrayList<String> doInBackground(String... strings) {
             Document doc = null;
-            String zipcode = "98052";
+            String zipcode = strings[0];
+            //String salary = strings[1];
             String buyPref = "for_sale";
             ArrayList<String> prices = new ArrayList<>();
             String url = "https://www.zillow.com/" + "homes/" + buyPref + "/" + zipcode + "_rb/";
@@ -106,20 +113,18 @@ public class HouseListing extends AppCompatActivity {
         @Override
         protected void onPostExecute(ArrayList<String> result) {
             super.onPostExecute(result);
-            Random rand = new Random();
-            int randNum = rand.nextInt(30);
-            price.setText(result.get(randNum));
+            price.setText(result.get(Integer.parseInt(index)));
         }
     }
 
-    class Images extends AsyncTask<Void, Void, Bitmap> {
+    class Images extends AsyncTask<String, Void, Bitmap> {
 
         @Override
-        protected Bitmap doInBackground(Void... voids) {
+        protected Bitmap doInBackground(String... strings) {
             Document doc = null;
-            Random rand = new Random();
-            int randNum = rand.nextInt(8);
-            String zipcode = "98052";
+            String zipcode = strings[0];
+            String idx = strings[1];
+            int index = Integer.parseInt(idx);
             String buyPref = "for_sale";
             ArrayList<String> imgs = new ArrayList<>();
             String url = "https://www.zillow.com/" + "homes/" + buyPref + "/" + zipcode + "_rb/";
@@ -129,7 +134,7 @@ public class HouseListing extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            Element photos = doc.select("ul.photo-cards > li").get(randNum);
+            Element photos = doc.select("ul.photo-cards > li").get(index);
             Element anchor = photos.select("div.list-card-top > a").first();
             String src = anchor.child(0).attr("src");
 
@@ -156,11 +161,11 @@ public class HouseListing extends AppCompatActivity {
     }
 
 
-    class Metrics extends AsyncTask<Void, Void, Metric> {
+    class Metrics extends AsyncTask<String, Void, AreaMetric> {
         @Override
-        protected Metric doInBackground(Void... voids) {
+        protected AreaMetric doInBackground(String... strings) {
             Document doc = null;
-            String zipcode = "98007";
+            String zipcode = strings[0];
             String url = "https://www.zipdatamaps.com/" + zipcode + "#:~:text=Zip%20Code%2098052%20is%20located%20in%20the%20state," +
                     "Postal%20Service%20name%20for%2098052%20is%20REDMOND%2C%20Washington.";
             try {
@@ -174,11 +179,11 @@ public class HouseListing extends AppCompatActivity {
             String medianIncome = table.child(9).child(1).html();
             String unemployment = table.child(8).child(1).child(0).html();
 
-            return new Metric(scores, commute, medianIncome, unemployment);
+            return new AreaMetric(scores, commute, medianIncome, unemployment);
         }
 
         @Override
-        protected void onPostExecute(Metric m) {
+        protected void onPostExecute(AreaMetric m) {
             super.onPostExecute(m);
             metric = m;
         }
