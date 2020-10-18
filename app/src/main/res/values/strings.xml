@@ -20,4 +20,9 @@
     <string name="nextbutton">nextButton</string>
     <string name="settings">Settings</string>
     <string name="best_matches">Best Matches</string>
+    <string name="example_metric">Example Metric</string>
+    <string name="example_commute">Example Commute</string>
+    <string name="example_median_income">Example Median Income</string>
+    <string name="example_unemployment_rate">Example Unemployment Rate</string>
+    <string name="about_this_area">About This Area</string>
 </resources>

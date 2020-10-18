@@ -35,16 +35,13 @@ public class MainActivity extends AppCompatActivity {
     public void checkAccount(View view) {
         String mail = email.getText().toString().trim();
         String pass = password.getText().toString().trim();
-        fAuth.signInWithEmailAndPassword(mail,pass).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Intent intent = new Intent(getApplicationContext(), HouseListing.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(MainActivity.this, "Login Information is Incorrect. Please Try Again.", Toast.LENGTH_LONG).show();
-                    Log.d(LOG_TAG,task.getException().toString());
-                }
+        fAuth.signInWithEmailAndPassword(mail,pass).addOnCompleteListener(MainActivity.this, task -> {
+            if(task.isSuccessful()){
+                Intent intent = new Intent(getApplicationContext(), HouseListing.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(MainActivity.this, "Login Information is Incorrect. Please Try Again.", Toast.LENGTH_LONG).show();
+                Log.d(LOG_TAG,task.getException().toString());
             }
         });
     }

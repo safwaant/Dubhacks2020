@@ -26,9 +26,9 @@ public class MetricsActivity extends AppCompatActivity {
 
 
 
-        metric.setText(data.test_rating);
-        commute.setText(data.commute_time);
-        medianIncome.setText(data.medianIncome);
-        unemployment.setText(data.unemployment);
+        metric.setText("School Performance: " + data.test_rating);
+        commute.setText("Commute Time: " + data.commute_time);
+        medianIncome.setText("Median Income: " + data.medianIncome);
+        unemployment.setText("Unemployment: " + data.unemployment);
     }
 }
