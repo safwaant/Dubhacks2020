@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.auth.User;
 
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
@@ -38,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Intent intent = new Intent(getApplicationContext(),HouseListing.class);
+                    Intent intent = new Intent(getApplicationContext(), HouseListing.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(MainActivity.this, "Login Information is Incorrect. Please Try Again.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Login Information is Incorrect. Please Try Again.", Toast.LENGTH_LONG).show();
                     Log.d(LOG_TAG,task.getException().toString());
                 }
             }

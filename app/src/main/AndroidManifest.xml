@@ -11,8 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HFinder">
+        <activity android:name=".Settings"
+            android:parentActivityName=".HouseListing">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.HouseScout.HouseListing" />
+        </activity>
         <activity android:name=".MetricsActivity">
-
         </activity>
         <activity
             android:name=".RegistrationActivity"
@@ -29,7 +34,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".HouseListing">
-
         </activity>
     </application>
 

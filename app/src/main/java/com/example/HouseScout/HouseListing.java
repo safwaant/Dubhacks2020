@@ -4,18 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.api.Metric;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -23,18 +22,15 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class HouseListing extends AppCompatActivity {
-
+    ImageButton settingsButton;
     TextView location;
     TextView price;
     ImageView houseImg;
-    Button next;
+    FloatingActionButton next;
     AreaMetric metric;
     String zipcode = "98052";
     String index = "0";
@@ -44,6 +40,10 @@ public class HouseListing extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house_listing);
+        settingsButton = (ImageButton) findViewById(R.id.settingsbutton);
+        settingsButton.setOnClickListener(v -> {
+            startActivity(new Intent(HouseListing.this, Settings.class));
+        });
 
         next = findViewById(R.id.next);
         location = findViewById(R.id.location);
