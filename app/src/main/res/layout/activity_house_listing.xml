@@ -26,7 +26,6 @@
             android:layout_height="61dp"
             android:background="@drawable/rounded_shape"
             android:text="@string/example_price"
-
             android:textAlignment="center"
             android:textColor="@color/darkGreen"
             android:textSize="35sp"
@@ -61,11 +60,25 @@
             android:contentDescription="@string/nextbutton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.954"
+            app:layout_constraintHorizontal_bias="0.921"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/price"
-            app:layout_constraintVertical_bias="0.703"
+            app:layout_constraintVertical_bias="0.795"
             app:srcCompat="@drawable/ic_baseline_arrow_forward_24" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:contentDescription="@string/backbutton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/price"
+            app:layout_constraintHorizontal_bias="0.079"
+            app:layout_constraintVertical_bias="0.795"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
         <ImageButton
             android:id="@+id/settingsbutton"
@@ -100,8 +113,8 @@
             android:id="@+id/link"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
             android:autoLink="web"
+            android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ourfinds" />

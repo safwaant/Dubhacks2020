@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -31,12 +32,12 @@ public class HouseListing extends AppCompatActivity {
     TextView price;
     ImageView houseImg;
     FloatingActionButton next;
+    FloatingActionButton back;
     AreaMetric metric;
-    String zipcode = "98052";
+    String zipcode = "10001";
     String index = "0";
     TextView houseLink;
 
-    ArrayList<String> prices = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +47,11 @@ public class HouseListing extends AppCompatActivity {
             startActivity(new Intent(HouseListing.this, Settings.class));
         });
 
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        zipcode = prefs.getString("zipcode", "98052");
+
         next = findViewById(R.id.next);
+        back = findViewById(R.id.back);
         location = findViewById(R.id.location);
         price = findViewById(R.id.price);
         houseImg = findViewById(R.id.imageView);
@@ -89,6 +94,24 @@ public class HouseListing extends AppCompatActivity {
             }
         });
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(Integer.parseInt(index) > 0) {
+                    int temp = Integer.parseInt(index);
+                    temp--;
+                    String idx = "" + temp;
+                    index = idx;
+                }
+
+                Images imgs = new Images();
+                imgs.execute(zipcode, index);
+
+                Prices priceList = new Prices();
+                priceList.execute(zipcode);
+            }
+        });
+
     }
 
     class Prices extends AsyncTask<String, Void, ArrayList<String>> {
@@ -97,7 +120,6 @@ public class HouseListing extends AppCompatActivity {
         protected ArrayList<String> doInBackground(String... strings) {
             Document doc = null;
             String zipcode = strings[0];
-            //String salary = strings[1];
             String buyPref = "for_sale";
             ArrayList<String> prices = new ArrayList<>();
             String url = "https://www.zillow.com/" + "homes/" + buyPref + "/" + zipcode + "_rb/";
