@@ -8,4 +8,6 @@
     <string name="passwordHint2">Confirm Password</string>
     <string name="loginButton">LOGIN</string>
     <string name="registrationText">Registration</string>
+    <string name="priceText">Example Price</string>
+    <string name="locationText">Example Location</string>
 </resources>
