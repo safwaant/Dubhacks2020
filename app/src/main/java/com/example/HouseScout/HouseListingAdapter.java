@@ -1,4 +1,5 @@
 package com.example.HouseScout;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,16 +9,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 
 public class HouseListingAdapter extends RecyclerView.Adapter<HouseListingAdapter.ViewHolder>{
 
     private static final String LOG_TAG = HouseListingAdapter.class.getSimpleName();
-    List<House> HouseList;
+    private List<House> houses;
+    private Context context;
 
-    public HouseListingAdapter(List<House> houseList){
-        this.HouseList = houseList;
+    public HouseListingAdapter(List<House> houseList,Context context){
+        this.houses = houseList;
+        this.context = context;
     }
 
     @NonNull
@@ -31,15 +36,15 @@ public class HouseListingAdapter extends RecyclerView.Adapter<HouseListingAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        /*
-        Insert jsoup to set img
-         */
+       House house = houses.get(position);
+       holder.price.setText(house.price);
+       Picasso.get().load(house.getUrl()).into(holder.houseImage);
     }
 
 
     @Override
     public int getItemCount() {
-        return HouseList.size();
+        return houses.size();
     }
 
 
